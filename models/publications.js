@@ -1,9 +1,10 @@
 const mongoose = require('mongoose')
-const Schema = mongoose.Schema
+//Created a const to store the mongoose module (allows create a model Schema)
+const Schema = mongoose.Schema;
 
-const Publication = new Schema({
-    User: {
-        type: Object,
+const PublicationSchema = new Schema({
+    user: {
+        type: String,
         required: true
     },
     date_create: {
@@ -28,3 +29,6 @@ const Publication = new Schema({
     }]
 
 })
+
+const Publication = mongoose.model("Publication", PublicationSchema)
+module.exports = Publication
