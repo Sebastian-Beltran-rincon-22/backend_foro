@@ -10,7 +10,7 @@ const UserSchema = new Schema({
         maxLenth: 100
     },
 
-    user_imagen:{
+    user_image: {
         type: String,
         required: false
     },
