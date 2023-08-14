@@ -30,5 +30,5 @@ const PublicationSchema = new Schema({
 
 })
 
-const Publication = mongoose.model("Publication", PublicationSchema)
-module.exports = Publication
+const publication = mongoose.model("Publication", PublicationSchema)
+module.exports = publication
