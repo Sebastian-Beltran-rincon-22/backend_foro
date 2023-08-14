@@ -67,3 +67,5 @@ const controllerUser = {
         }
     }
 }
+
+module.exports = controllerUser
