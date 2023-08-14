@@ -13,6 +13,7 @@ const controllerUser = {
                 user_email: user_email,
                 user_password: user_password
             })
+            res.json({ msg: 'Create' })
         } catch (error) {
             return res.status(500).json({ msg: error })
         }
@@ -37,5 +38,22 @@ const controllerUser = {
         }
     },
 
-
+    updateUser: async (req, res) => {
+        try {
+            const { id } = req.params
+            const user_name = req.body.user_name
+            const user_image = req.body.user_image
+            const user_email = req.body.user_email
+            const user_password = req.body.user_password
+            await User.findByIdAndUpdate(id, {
+                user_name: user_name,
+                user_image: user_image,
+                user_email: user_email,
+                user_password: user_password
+            })
+            res.json({ msg: 'update' })
+        } catch (error) {
+            return res.status(500).json({ msg: error })
+        }
+    },
 }
