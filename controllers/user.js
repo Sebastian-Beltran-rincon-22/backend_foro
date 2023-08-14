@@ -1,4 +1,4 @@
-const User = requiere('../models/user.js')
+const User = require('../models/user.js')
 
 const controllerUser = {
     create: async (req, res) => {
