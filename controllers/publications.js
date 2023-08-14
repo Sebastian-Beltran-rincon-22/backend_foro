@@ -33,6 +33,15 @@ const controllerPublication = {
         } catch (error) {
             return res.status(500).json({ msg: error.message })
         }
+    },
+    getPublicationById: async (req, res) => {
+        try {
+            const { id } = req.params
+            const publication = await Publication.findById(id)
+            res.json(publication)
+        } catch (error) {
+            return res.status(500).json({ msg: error.message })
+        }
     }
 }
 
