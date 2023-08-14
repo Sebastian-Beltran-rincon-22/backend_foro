@@ -56,4 +56,14 @@ const controllerUser = {
             return res.status(500).json({ msg: error })
         }
     },
+
+    deleteUser: async (req, res) => {
+        try {
+            const { id } = req.params
+            await User.findByIdAndDelete(id)
+            res.json({ msg: 'Delete' })
+        } catch (error) {
+            return res.status(500).json({ msg: error })
+        }
+    }
 }
