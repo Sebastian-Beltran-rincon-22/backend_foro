@@ -1,19 +1,34 @@
-const User = require('../models/user.js')
+const User = require('../models/user')
+const {Admin} = require('../models/Admin')
+
 
 const controllerUser = {
-    create: async (req, res) => {
+
+        create: async (req, res) => {
         try {
-            const user_name = req.body.user_name
-            const user_image = req.body.user_image
-            const user_email = req.body.user_email
-            const user_password = req.body.user_password
-            await User.create({
-                user_name: user_name,
-                user_image: user_image,
-                user_email: user_email,
-                user_password: user_password
+            const {userName,userImg,email,password,admin} = req.body
+            const adminFound = await Admin.find({ name: { $in: admin } })
+
+            const user = new User({
+                userName,
+                userImg,
+                email,
+                password,
+                admin: adminFound.map((admins) => admins._id)
             })
-            res.json({ msg: 'Create' })
+
+            user.password = await User.encryptPassword(user.password)
+
+            const savedUser = await user.save()
+
+            return res.status(200).json({
+                _id: savedUser._id,
+                userName: savedUser.userName,
+                email: savedUser.email,
+                password: savedUser.password,
+                roles: savedUser.roles,
+            })
+
         } catch (error) {
             return res.status(500).json({ msg: error })
         }
@@ -41,17 +56,10 @@ const controllerUser = {
     updateUser: async (req, res) => {
         try {
             const { id } = req.params
-            const user_name = req.body.user_name
-            const user_image = req.body.user_image
-            const user_email = req.body.user_email
-            const user_password = req.body.user_password
-            await User.findByIdAndUpdate(id, {
-                user_name: user_name,
-                user_image: user_image,
-                user_email: user_email,
-                user_password: user_password
+            await User.findByIdAndUpdate({id},req.body).then(res =>{
+                console.log(res)
             })
-            res.json({ msg: 'update' })
+            res.status(200).json({ msg: 'update' })
         } catch (error) {
             return res.status(500).json({ msg: error })
         }
@@ -66,6 +74,6 @@ const controllerUser = {
             return res.status(500).json({ msg: error })
         }
     }
-}
+} 
 
 module.exports = controllerUser
