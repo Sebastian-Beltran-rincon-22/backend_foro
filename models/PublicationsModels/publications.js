@@ -4,8 +4,8 @@ const Schema = mongoose.Schema;
 
 const PublicationSchema = new Schema({
     user: {
-        type: String,
-        required: true
+        ref: 'User',
+        type: Schema.Types.ObjectId
     },
     date_create: {
         type: Date,
@@ -19,16 +19,8 @@ const PublicationSchema = new Schema({
     image: {
         type: String
     },
-    reactions: [{
-        type: String
-    }],
-    comments: [{
-        type: String,
-        content: String,
-        date: Date
-    }]
 
-})
+},{versionKey:false})
 
-const publication = mongoose.model("Publication", PublicationSchema)
-module.exports = publication
+const Publication = mongoose.model("Publication", PublicationSchema)
+module.exports = Publication

@@ -2,51 +2,61 @@ const mongoose = require('mongoose')
 const bcrypt = require('bcrypt')
 const Schema = mongoose.Schema
 
-const UserSchema = new Schema({
-    user_name: {
+
+const userSchema = new Schema({
+    userName: {
         type: String,
         required: true,
         unique: true,
         maxLenth: 100
     },
 
-    user_image: {
+    userImg: {
         type: String,
         required: false
     },
-    user_email: {
+
+    email: {
         type: String,
         required: true,
         unique: true,
         validate: {
-            validator: function (user_email) {
+            validator: function (email) {
                 return /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/.test(email);
             },
             message: props => `${props.value} is not a valid email`
         },
         required: [true, 'user email required']
     },
-    user_password: {
+
+    password: {
         type: String,
         required: true
-    }
-});
+    },
+    admin:[{
+        ref: "Admin",
+        type: mongoose.Schema.Types.ObjectId
+    }]
+    
+},{versionKey:false, timestamps:true});
 
-UserSchema.pre('save', function (next) {
+userSchema.statics.encryptPassword = async (password) =>{
+    const salt = await bcrypt.genSalt(10)
+    return await bcrypt.hash(password,salt)
+};
+
+userSchema.statics.comparPassword = async (password, receivedPassword) =>{
+    return await bcrypt.compare(password, receivedPassword)
+};
+
+userSchema.pre("save", async function (next) {
     const user = this;
-
-    if (!user.isModified('user_password')) return next();
-
-    bcrypt.genSalt(10, function (err, salt) {
-        if (err) return next(err);
-
-        bcrypt.hash(user.user_password, salt, function (err, hash) {
-            if (err) return next(err);
-
-            user.user_password = hash;
-            next();
-        });
-    });
+    if (!user.isModified("password")) {
+        return next();
+    }
+    const hash = await bcrypt.hash(user.password, 10);
+    user.password = hash;
+    next();
 });
 
-module.exports = mongoose.model('User', UserSchema)
+module.exports = mongoose.model('User',userSchema)

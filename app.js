@@ -1,9 +1,14 @@
 const cors = require('cors')
 const bodyParser = require('body-parser')
 const express = require('express')
+const user = require ('./routers/user')
+const publication = require ('./routers/PublicationsRou/publications')
+const admin = require('./routers/auth')
+const interactions = require('./routers/PublicationsRou/interactions')
+const createAdmin = require('./libs/initialSetup')
+
 const app = express()
-
-
+createAdmin()
 
 app.use(cors({
     origin:"*",
@@ -14,12 +19,14 @@ app.use(cors({
 }))
 
 app.use(express.json())
-app.set('view engine', 'ejs')
-app.use(express.static("public"))
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
 
-const admin = require ('./routers/admin')
-app.use('/admin',admin)
+
+app.use('/poofo',user)
+app.use('/publictpoofo',publication)
+app.use('/admins',admin)
+app.use('/interactions',interactions)
+
 
 module.exports = app
