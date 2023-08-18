@@ -214,5 +214,7 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+# Ignorar el archivo config.js
+config.js
 
 # End of https://www.toptal.com/developers/gitignore/api/node,windows,linux,macos
