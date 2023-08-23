@@ -1,21 +1,20 @@
-const mongoose = require('mongoose')
-const bcrypt = require('bcrypt')
-const Schema = mongoose.Schema
+// Import the mongoose library and bcrypt for password hashing
+const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
+const Schema = mongoose.Schema;
 
-
+// Define a new Schema called 'userSchema'
 const userSchema = new Schema({
     userName: {
         type: String,
         required: true,
         unique: true,
-        maxLenth: 100
+        maxLength: 100
     },
-
     userImg: {
         type: String,
         required: false
     },
-
     email: {
         type: String,
         required: true,
@@ -28,27 +27,31 @@ const userSchema = new Schema({
         },
         required: [true, 'user email required']
     },
-
     password: {
         type: String,
         required: true
     },
-    admin:[{
+    admin: [{
         ref: "Admin",
         type: mongoose.Schema.Types.ObjectId
     }]
-    
-},{versionKey:false, timestamps:true});
+}, {
+    versionKey: false,
+    timestamps: true // Automatically adds createdAt and updatedAt fields
+});
 
-userSchema.statics.encryptPassword = async (password) =>{
-    const salt = await bcrypt.genSalt(10)
-    return await bcrypt.hash(password,salt)
+// Define a static method 'encryptPassword' on the schema to hash passwords
+userSchema.statics.encryptPassword = async (password) => {
+    const salt = await bcrypt.genSalt(10);
+    return await bcrypt.hash(password, salt);
 };
 
-userSchema.statics.comparPassword = async (password, receivedPassword) =>{
-    return await bcrypt.compare(password, receivedPassword)
+// Define a static method 'comparePassword' on the schema to compare passwords
+userSchema.statics.comparePassword = async (password, receivedPassword) => {
+    return await bcrypt.compare(password, receivedPassword);
 };
 
+// Use a pre-save hook to hash the password before saving it to the database
 userSchema.pre("save", async function (next) {
     const user = this;
     if (!user.isModified("password")) {
@@ -59,4 +62,5 @@ userSchema.pre("save", async function (next) {
     next();
 });
 
-module.exports = mongoose.model('User',userSchema)
+// Create a Mongoose model named 'User' with the 'userSchema' schema
+module.exports = mongoose.model('User', userSchema);
