@@ -1,43 +1,62 @@
-const {Admin} = require('../models/admin')
-const User = require('../models/user')
-const config = require('../config')
+// Import the Admin model
+const { Admin } = require('../models/admin'); // Import the Admin model
+// Import the User model
+const User = require('../models/user'); // Import the User model
+// Import the configuration
+const config = require('../config'); // Import the configuration
 
-const rolAdmin ={
-    createAdmin : async () =>{
-    try{    
-        const count = await Admin.estimatedDocumentCount()
+// Define an object for administrator role functions
+const rolAdmin = {
+    // Function to create default administrator roles
+    createAdmin: async () => {
+        try {
+            // Count the estimated number of documents in the Admin model
+            const count = await Admin.estimatedDocumentCount();
 
-        if (count > 0 ) return
+            // If administrator roles already exist, perform no further action
+            if (count > 0) return;
 
-        const values = await Promise.all([
-            new Admin({name: "user"}).save(),
-            new Admin({name: "admin"}).save()
-        ])
-    
-    console.log(values)
-    }catch ( error){
-        console.error(error)
-    }
-},
+            // Create Admin instances for "user" and "admin" and save them to the database
+            const values = await Promise.all([
+                new Admin({ name: "user" }).save(),
+                new Admin({ name: "admin" }).save()
+            ]);
 
-    adminprint : async () =>{
+            console.log(values); // Print the values of created roles
+        } catch (error) {
+            console.error(error); // Error handling in case of failure
+        }
+    },
 
-        const userFound = await  User.findOne({email: config.ADMIN_EMAIL})
-        console.log(userFound)
-        if (userFound) return
+    // Function to create a default administrator user if not exists
+    adminprint: async () => {
+        try {
+            // Search for a user based on the administrator email in the configuration
+            const userFound = await User.findOne({ email: config.ADMIN_EMAIL });
+            console.log(userFound); // Print the found user (if exists)
 
-        const admin = await Admin.find({name: {$in:["admin"]}})
+            // If the administrator user already exists, perform no further action
+            if (userFound) return;
 
-        const userRegis = await User.create({
-            userName: config.ADMIN_USERNAME,
-            email: config.ADMIN_EMAIL,
-            password: config.ADMIN_PASSWORD,
-            admin: admin.map((admins) =>admins._id)
-        })
+            // Search for the administrator role by its name
+            const admin = await Admin.find({ name: { $in: ["admin"] } });
 
-        console.log(`new user created: ${userRegis.email}`)
+            // Create a new user with administrator data provided in the configuration
+            const userRegis = await User.create({
+                userName: config.ADMIN_USERNAME,
+                email: config.ADMIN_EMAIL,
+                password: config.ADMIN_PASSWORD,
+                admin: admin.map((admins) => admins._id) // Assign the administrator role
+            });
+
+            console.log(`New user created: ${userRegis.email}`);
+        } catch (error) {
+            console.log(error); // Error handling in case of failure
+        }
     }
 }
 
-module.exports = rolAdmin.createAdmin
+// Export the function to create default administrator roles
+module.exports = rolAdmin.createAdmin;
+
 
