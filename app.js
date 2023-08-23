@@ -1,32 +1,39 @@
-const cors = require('cors')
-const bodyParser = require('body-parser')
-const express = require('express')
-const user = require ('./routers/user')
-const publication = require ('./routers/PublicationsRou/publications')
-const admin = require('./routers/auth')
-const interactions = require('./routers/PublicationsRou/interactions')
-const createAdmin = require('./libs/initialSetup')
+// Import the necessary modules
+const cors = require('cors'); // Middleware for enabling CORS
+const bodyParser = require('body-parser'); // Middleware for parsing request bodies
+const express = require('express'); // Express framework
+const user = require('./routers/user'); // Router for user-related routes
+const publication = require('./routers/PublicationsRou/publications'); // Router for publication-related routes
+const admin = require('./routers/auth'); // Router for admin-related routes
+const interactions = require('./routers/PublicationsRou/interactions'); // Router for interaction-related routes
+const createAdmin = require('./libs/initialSetup'); // Function to create an admin
 
-const app = express()
-createAdmin()
+// Create an Express app instance
+const app = express();
 
+// Run the function to create an admin (perhaps for initial setup)
+createAdmin();
+
+// Enable CORS with specific options
 app.use(cors({
-    origin:"*",
-    methods:"GET,HEAD,POST,PATCH,PUT,DELETE",
-    credentials: true,
-    preflightContinue: false,
-    optionsSuccessStatus: 204,
-}))
+    origin: "*", // Allow requests from any origin (replace with actual origin)
+    methods: "GET,HEAD,POST,PATCH,PUT,DELETE", // Allowed HTTP methods
+    credentials: true, // Allow credentials (cookies, authorization headers)
+    preflightContinue: false, // Disable preflight requests
+    optionsSuccessStatus: 204 // Set status code for successful preflight
+}));
 
-app.use(express.json())
-app.use(bodyParser.urlencoded({extended: true}))
-app.use(bodyParser.json())
+// Parse request bodies as JSON
+app.use(express.json());
 
+// Parse URL-encoded request bodies
+app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use('/poofo',user)
-app.use('/publictpoofo',publication)
-app.use('/admins',admin)
-app.use('/interactions',interactions)
+// Use routers for different parts of the application
+app.use('/poofo', user); // Routes for user-related functionality
+app.use('/publictpoofo', publication); // Routes for publication-related functionality
+app.use('/admins', admin); // Routes for admin-related functionality
+app.use('/interactions', interactions); // Routes for interaction-related functionality
 
-
-module.exports = app
+// Export the configured Express app
+module.exports = app;

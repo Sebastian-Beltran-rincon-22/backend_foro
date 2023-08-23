@@ -1,28 +1,32 @@
-const mongoose = require('mongoose')
+// Import the mongoose library
+const mongoose = require('mongoose');
 
-const Schema = mongoose.Schema
+// Destructure the Schema class from mongoose
+const { Schema } = mongoose;
 
+// Define a new Schema called 'interacSchema'
 const interacSchema = new Schema({
-
+    // Define a field named 'reactions'
     reactions: {
-        type: Boolean,
-        default: false
+        type: Boolean,       // Field data type: Boolean (true/false)
+        default: false       // Default value: false
     },
+    // Define a field named 'comments'
     comments: {
-        type: String,
-        content: String,
-        date: Date
+        type: String,        // Field data type: String
+        content: String,     // Subfield named 'content' of type String
+        date: Date           // Subfield named 'date' of type Date
     },
-    shares:{
-        type: String
+    // Define a field named 'shares'
+    shares: {
+        type: String        // Field data type: String
     },
-    
-    publication:{
-        ref: 'Publication',
-        type: mongoose.Schema.Types.ObjectId
-
+    // Define a field named 'publication'
+    publication: {
+        ref: 'Publication',                            // Reference to another model named 'Publication'
+        type: mongoose.Schema.Types.ObjectId          // Field data type: ObjectId (for referencing)
     }
+}, { versionKey: false }); // Disable versioning in the documents
 
-},{versionKey:false})
-
-module.exports = mongoose.model('Interactions',interacSchema)
+// Export a Mongoose model named 'Interactions' with the 'interacSchema' schema
+module.exports = mongoose.model('Interactions', interacSchema);
