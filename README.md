@@ -60,4 +60,4 @@ If you want to contribute to this project, we are open to pull requests! Please 
 
 ## Contact
 
-If you have any questions or suggestions, feel free to contact the development team at [email or link to communication platform].
+If you have any questions or suggestions, feel free to contact the development team at 
