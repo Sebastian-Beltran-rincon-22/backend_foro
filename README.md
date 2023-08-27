@@ -5,7 +5,7 @@
 ![Logo](https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg)
 
 # Estructura de Carpetas 
-![Estructure Back-End](![Captura de pantalla 2023-08-27 a la(s) 6 11 42 p m](https://github.com/nikolaspaez06/backend_foro/assets/132379296/9b1ef784-86f4-48aa-9a41-ce4fc964cc42)
+![Estructure Back-End](https://github.com/nikolaspaez06/backend_foro/assets/132379296/9b1ef784-86f4-48aa-9a41-ce4fc964cc42)
 
 
 
@@ -33,8 +33,8 @@ Este proyecto es un ejemplo de una API RESTful desarrollada con Express-Js que p
 
 1 Clona el repositorio en tu maquina local
 ```bash
-$ git clone https://github.com/TheLostHeaven/Library-Forum-Api.git
-```
+$ git clone [
+](https://github.com/nikolaspaez06)```
 
 2 Navega en el directorio del proyecto 
 ```bash
