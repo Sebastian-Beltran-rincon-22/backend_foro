@@ -5,7 +5,7 @@
 ![Logo](https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg)
 
 # Estructura de Carpetas 
-![Estructure Back-End](https://github.com/nikolaspaez06/backend_foro/assets/132379296/9b1ef784-86f4-48aa-9a41-ce4fc964cc42)
+https://github.com/nikolaspaez06/backend_foro/assets/132379296/9b1ef784-86f4-48aa-9a41-ce4fc964cc42)
 
 
 
@@ -38,7 +38,7 @@ $ git clone [
 
 2 Navega en el directorio del proyecto 
 ```bash
-$ cd Library-Forum-Api
+$ cd backend_foro
 ```
 
 3 Puedes cambiar el origen del proyecto con los siguientes comando
