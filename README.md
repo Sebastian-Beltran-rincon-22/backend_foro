@@ -5,7 +5,7 @@
 ![Logo](https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg)
 
 # Estructura de Carpetas 
-https://github.com/nikolaspaez06/backend_foro/assets/132379296/9b1ef784-86f4-48aa-9a41-ce4fc964cc42)
+/https://github.com/nikolaspaez06/backend_foro/assets/132379296/9b1ef784-86f4-48aa-9a41-ce4fc964cc42)
 
 
 
