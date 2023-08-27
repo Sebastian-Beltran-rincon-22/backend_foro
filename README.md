@@ -5,7 +5,8 @@
 ![Logo](https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg)
 
 # Estructura de Carpetas 
-![Estructure Back-End]()
+![Estructure Back-End](![Captura de pantalla 2023-08-27 a la(s) 6 11 42 p m](https://github.com/nikolaspaez06/backend_foro/assets/132379296/9b1ef784-86f4-48aa-9a41-ce4fc964cc42)
+
 
 
 ## Descripción
