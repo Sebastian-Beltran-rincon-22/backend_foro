@@ -1,63 +1,85 @@
-# Forum Backend - Documentation
+# Library-Forum-Api - Express
 
-This is the backend of a forum, designed to handle the logic and functionality behind the application. The backend is built using JavaScript, Node.js and MongoDB as the database. The frontend of the application has been implemented in Angular.
+![Logo](https://upload.wikimedia.org/wikipedia/commons/6/64/Expressjs.png)
+![Logo](https://upload.wikimedia.org/wikipedia/commons/9/93/MongoDB_Logo.svg)
+![Logo](https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg)
 
-## Project Structure
+# Estructura de Carpetas 
+![Estructure Back-End]()
 
-The backend project has the following folder and file structure:
 
-- controllers/: Contains controllers to handle the different actions of the server.
-  - auth.js: Driver for user authentication.
-  - user.js: Controller for operations related to users.
-  
-- publicationscontrollers/: Contains controllers related to forum posts.
-  - interactions.js: Controller to manage interactions in posts.
-  - publications.js: Controller for forum post operations.
+## Descripción
 
-  - libs/: Contains initial configurations for the application.
+Este proyecto es un ejemplo de una API RESTful desarrollada con Express-Js que permite realizar operaciones CRUD (Crear, Leer, Actualizar, Eliminar) en un modelo de Foro de una Biblioteca y se administrada por Administradores con sus respectivos roles implemetando JsonWebToken
 
--initialSetups.js: File with initial configurations of the application.
+## Funcionalidades
 
-- middlewares/: Contains middlewares used in the server.
-  - authjw.js: Middleware for authentication using JSON Web Tokens.
-  - index.js: File to import and export middlewares.
-  - verifySignup.js: Middleware to verify the registration process.
+- Crear cuentas de Usuarios 
+- Crear cuentas de Administradores
+- Crear Posts para el foro
+- Editar el perfil del los Usuarios logueados en la pagina
+- Administrar Usuarios y personas con el rol de Administrador
 
-- models/: Defines the data models of the database.
-  - admin.js: Model for administrators.
-  - user.js: Model for normal users.
-  
-- models/publicationsmodel/: Defines models related to publications.
-  - interactions.js: Model for interactions in posts.
-  - publications.js: Template for forum posts.
+## Tecnologias Usadas
+- NodeJs
+- Express-Js
+- MongoDB
+- Cors
+- JsonWebToken
+- bcryptjs
 
-- routers/: Defines the routes and endpoints of the API.
-  - auth.js: Defines routes related to authentication.
-  - user.js: Defines routes for user operations.
+## Instalacion
 
-  - routers/publicationsrou/: Defines routes related to publications.
-  - interactions.js: Defines routes for interactions in posts.
-  - publications.js: Defines routes for the publication operations.
+1 Clona el repositorio en tu maquina local
+```bash
+$ git clone https://github.com/TheLostHeaven/Library-Forum-Api.git
+```
 
-- .gitignore: File to specify files and folders that should be ignored by Git.
-- app.js: Entry point of the Node.js application.
-- config.js: Application configuration file.
-- database.js: MongoDB database connection configuration.
-- index.js: Script to start the server.
-- package-lock.json and package.json: Dependency management files.
+2 Navega en el directorio del proyecto 
+```bash
+$ cd Library-Forum-Api
+```
 
-## Configuration and Use
+3 Puedes cambiar el origen del proyecto con los siguientes comando
 
-1. Make sure you have Node.js and MongoDB installed on your system.
-2. Clone this repository to your machine.
-3. Navigate to the project folder and run npm install to install the dependencies.
-4. Configure the configuration files (config.js, database.js) as needed.
-5. Run node index.js to start the server.
+```bash
+$ git remote -v
+$ git remote remove origin
+$ git remote add origin <nueva_url_del_repositorio>
+```
 
-## Contributions
+4 Instalar las dependecias necesarias
+- Recuerda tener el package.json y el package-lock.json en el root de la carpeta y ejecutas
 
-If you want to contribute to this project, we are open to pull requests! Please follow development best practices and make sure new features or fixes are properly tested.
+```bash
+$ npm i
+```
 
-## Contact
+## Uso
 
-If you have any questions or suggestions, feel free to contact the development team at 
+1 Inicia la app con 
+```bash
+$ npm run dev
+```
+
+2 Puedes acceder a ella desde el puerto configurado:
+
+http://localhost:4000
+
+3 Prueba las diferentes rutas disponibles para realizar operaciones anteriormente mecionada
+
+## Contacto
+
+Si tienes alguna pregunta o sugerencia o quieres la documentacion para desarrollar este proyecto, no dudes en contactarme en [jaljordan77@gmail.com](jaljordan77@gmail.com).
+
+
+## Autors
+
+- [@nicolas paez](https://github.com/nikolaspaez06)
+- [@huxley diaz](https://github.com/heisemberghuxley)
+- [@john palacios ](https://github.com/John9135)
+- [@juan andres  Ruiz](https://github.com/juan0941)
+- [@brayan Triana](https://github.com/Vincent10-o)
+- [@maribel aristizabal](https://github.com/maribel-aristizabal)
+- [@Sebastian Beltran](https://github.com/Sebastian-Beltran-rincon-22)
+- [@julian gaitan](https://github.com/Julian9373)
