@@ -1,23 +1,22 @@
-# Library-Forum-Api - Express
+# Back-End-Foro - Express
 
-![Logo](https://upload.wikimedia.org/wikipedia/commons/6/64/Expressjs.png)
-![Logo](https://upload.wikimedia.org/wikipedia/commons/9/93/MongoDB_Logo.svg)
-![Logo](https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg)
+![Logo](https://miro.medium.com/v2/resize:fit:1400/1*scZ5_B1mKwZxqP0KuCkf_w.png)
 
 # Estructura de Carpetas 
-[estructura de carpetas](https://github.com/nikolaspaez06/backend_foro/assets/132379296/9b1ef784-86f4-48aa-9a41-ce4fc964cc42)
-
+![image](https://github.com/nikolaspaez06/backend_foro/assets/132385582/fed020ed-34a2-4fad-98a2-34b1aba5436a)
 
 
 ## Descripción
 
-Este proyecto es un ejemplo de una API RESTful desarrollada con Express-Js que permite realizar operaciones CRUD (Crear, Leer, Actualizar, Eliminar) en un modelo de Foro de una Biblioteca y se administrada por Administradores con sus respectivos roles implemetando JsonWebToken
+Este proyecto es un ejemplo de una API RESTful desarrollada con Express-Js que permite realizar operaciones CRUD (Crear, Leer, Actualizar, Eliminar) en un modelo de Foro de una Biblioteca con acceso para Usuarios y con permisos que solo tendras los Administradores con sus respectivos roles implemetando JsonWebToken
 
 ## Funcionalidades
 
 - Crear cuentas de Usuarios 
 - Crear cuentas de Administradores
-- Crear Posts para el foro
+- Crear Publicaciones para el foro
+- Actualizar Publicaciones existentes en el foro
+- Crear Interaciones dentro de las publicaciones
 - Editar el perfil del los Usuarios logueados en la pagina
 - Administrar Usuarios y personas con el rol de Administrador
 
@@ -33,8 +32,8 @@ Este proyecto es un ejemplo de una API RESTful desarrollada con Express-Js que p
 
 1 Clona el repositorio en tu maquina local
 ```bash
-$ git clone [
-](https://github.com/nikolaspaez06)```
+$ git clone git@github.com:nikolaspaez06/backend_foro.git
+```
 
 2 Navega en el directorio del proyecto 
 ```bash
@@ -65,16 +64,23 @@ $ npm run dev
 
 2 Puedes acceder a ella desde el puerto configurado:
 
-http://localhost:4000
+http://localhost:3000
 
 3 Prueba las diferentes rutas disponibles para realizar operaciones anteriormente mecionada
 
 ## Contacto
 
-Si tienes alguna pregunta o sugerencia o quieres la documentacion para desarrollar este proyecto, no dudes en contactarme en [jaljordan77@gmail.com](jaljordan77@gmail.com).
+Si tienes preguntas o sugerencias, no dudes en ponerte en contacto con el equipo de desarrollo enviando un correo electrónico a alguno de los siguientes miembros:
 
+- [Elhuxley277@gmail.com](mailto:elhuxley277@gmail.com)
+- [Maribelaristizabal079@gmail.com](mailto:maribelaristizabal079@gmail.com)
+- [Sebastiantincon834@gmail.com](mailto:sebastiantincon834@gmail.com)
+- [Jaljordan77@gmail.com](mailto:jaljordan77@gmail.com)
+- [Palacioalexander5@gmail.com](mailto:palacioalexander5@gmail.com)
+- [Ruizvalencia78@gmail.com](mailto:ruizvalencia78@gmail.com)
+- [Brayantandap@gmail.com](mailto:brayantandap@gmail.com)
 
-## Autors
+## Autores
 
 - [@nicolas paez](https://github.com/nikolaspaez06)
 - [@huxley diaz](https://github.com/heisemberghuxley)
