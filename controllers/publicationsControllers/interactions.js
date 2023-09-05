@@ -111,8 +111,76 @@ const interacControllers = {
             // If an error occurs, respond with a client error
             return res.status(400).json({ msg: error.message });
         }
-    }
-}
+    },
 
+    incrementarLike: async (req, res) => {
+        try {
+            const { id } = req.params;
+
+        // Encuentra la interacción por su ID
+            const interaction = await Interactions.findById(id);
+
+            if (!interaction) {
+                return res.status(404).json({ error: 'Interacción no encontrada' });
+            }
+
+        // Incrementa el contador de likes
+            interaction.likes += 1;
+
+        // Guarda la interacción actualizada
+            await interaction.save();
+
+        // Responde con el nuevo contador de likes
+            res.json({ likes: interaction.likes });
+        } catch (error) {
+            return res.status(500).json({ msg: error.message });
+        }
+    },
+
+// Function para obtener el contador de likes
+    obtenerLikes: async (req, res) => {
+        try {
+            const { id } = req.params;
+
+        // Encuentra la interacción por su ID
+            const interaction = await Interactions.findById(id);
+
+            if (!interaction) {
+                return res.status(404).json({ error: 'Interacción no encontrada' });
+        }
+
+        // Responde con el contador de likes actual
+            res.json({ likes: interaction.likes });
+        } catch (error) {
+            return res.status(500).json({ msg: error.message });
+        }
+    },
+    
+    eliminarLike: async (req, res) => {
+        try {
+            const { id } = req.params;
+    
+            // Encuentra la interacción por su ID
+            const interaction = await Interactions.findById(id);
+    
+            if (!interaction) {
+                return res.status(404).json({ error: 'Interacción no encontrada' });
+            }
+    
+            // Verifica si el contador de likes es mayor que cero antes de restar
+            if (interaction.likes > 0) {
+                interaction.likes -= 1;
+            }
+    
+            // Guarda la interacción actualizada
+            await interaction.save();
+    
+            // Responde con el nuevo contador de likes
+            res.json({ likes: interaction.likes });
+        } catch (error) {
+            return res.status(500).json({ msg: error.message });
+        }
+    },
+}
 // Export the controllers object
 module.exports = interacControllers;
